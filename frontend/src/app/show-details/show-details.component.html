@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Task No</th>
+      <th>Task Name</th>
+      <th>Task Time(hr)</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let obj of arrTask">
+      <td>{{obj.task_no}}</td>
+      <td>{{obj.task_name}}</td>
+      <td>{{obj.task_time}}</td>
+      <td [innerHTML]="obj.description"></td>
+      <td>{{obj.status}}</td>
+      <td id=name{{obj.task_no}}>
+        <a (click)="edit(obj)" style="color:blue">Edit </a>|
+        <a (click)="delete(obj)" style="color:red">Delete </a>|
+        <a (click)="cnfm(obj)" style="color:black">Final Confirmation</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

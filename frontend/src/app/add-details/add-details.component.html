@@ -1,0 +1,63 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card mx-4">
+            <div class="card-body p-4">
+
+              <h2>{{task}}</h2>
+              <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+
+                <!-- @task_no -->
+                <div class="form-group">
+                  <label for="task_no">task_no</label>
+                  <input type="number" formControlName="task_no" class="form-control" [ngClass]="{ 'is-invalid':  submitted && f.task_no.errors }" />
+                  <div *ngIf="submitted && f.task_no.errors" class="invalid-feedback">
+                    <div *ngIf="f.task_no.errors.required">task_no is required</div>
+                  </div>
+                </div>
+                <!-- @end -->
+
+                <!-- @task_name -->
+                <div class="form-group">
+                  <label for="task_name">task_name</label>
+                  <input type="text" formControlName="task_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.task_name.errors }" />
+                  <div *ngIf="submitted && f.task_name.errors" class="invalid-feedback">
+                    <div *ngIf="f.task_name.errors.required">task_name is required</div>
+                  </div>
+                </div>
+                <!-- @end -->
+
+                <!-- @task_time -->
+                <div class="form-group">
+                  <label for="task_time">task_time (in hours)</label>
+                  <input type="number" formControlName="task_time" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.task_time.errors }" />
+                  <div *ngIf="submitted && f.task_time.errors" class="invalid-feedback">
+                    <div *ngIf="f.task_time.errors.required">task_time is required</div>
+                  </div>
+                </div>
+                <!-- @end -->
+
+                <!-- @description -->
+                <div class="form-group">
+                  <label for="description">description</label>
+                  <app-ngx-editor [placeholder]="'Enter description here...'" height="200px" [spellcheck]="true"
+                    formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></app-ngx-editor>
+                  <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                    <div *ngIf="f.description.errors.required">description <strong>required</strong></div>
+                  </div>
+                </div>
+                <!-- @end -->
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">{{btn}}</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<!-- [disabled]='!inputForm.valid' -->
